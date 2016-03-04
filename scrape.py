@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 import requests
 import pandas as pd
-from datetime import date
+from datetime import date, datetime
 from warnings import warn
 import re
-from sqlalchemy import create_engine
 
 base_data_url = 'http://static.politico.com/mapdata/2016/'
-engine = create_engine('sqlite:///primary_data.db')
 
 raw_races = (
     requests.get(
@@ -109,4 +107,5 @@ results.columns = [
 ]
 
 results.drop('_', axis=1, inplace=True)
-results.to_sql('results', engine, if_exists='replace', index=False)
+results.to_csv('results_%s.csv' % datetime.now().isoformat(),
+               index=False, encoding='utf8')
