@@ -28,7 +28,7 @@ races = (
 
 
 def format_state_date(state, date):
-    '''Take a state abbreviation and date and return them in string formatted \
+    '''Take a state abbreviation and date and return them in string formatted
     for get_results().
     state (string): a two-letter state abbreviation.
     date (datetime.date-like): a datetime.date.strftime()-mungeable date.'''
@@ -38,9 +38,9 @@ def format_state_date(state, date):
 
 def get_results(state_date, base_data_url=base_data_url):
     '''Fetch raw results data for date and state.
-    state_date (string): state & date separated by underscore \
+    state_date (string): state & date separated by underscore
     (e.g., "IA_20160201")
-    base_data_url (string): "endpoint" to find raw results xml at. \
+    base_data_url (string): "endpoint" to find raw results xml at.
     defaults to "http://static.politico.com/mapdata/2016/"'''
 
     url = requests.compat.urljoin(base_data_url, '%s.xml' % state_date)
